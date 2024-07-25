@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <head>
+    <title>login</title>
+
+    <!--主要样式-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    
+  </head>
+  <style type="text/css">
+    .login {
+      width: 200px;
+      height: auto;
+      margin: auto;
+      margin-top: 320px;
+    }
+    strong {
+      font-size: 20px;
+      color: #fff;
+    }
+  </style>
+  <body
+  background={% static 'image/withu.jpeg' %}
+
+    style="
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    "
+  >
+    <div class="login">
+
+
+      <form method="post" action="/login/">
+      {% csrf_token %}
+
+       
+        <div class="form-group">
+          <label for="InputEmail1"><strong>UserName</strong> </label>
+          <input
+            type="text"
+            class="form-control"
+            id="Inputusername"
+            name="Inputusername"
+            placeholder="UserName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="InputPassword"><strong>Password</strong> </label>
+          <input
+            type="password"
+            class="form-control"
+            id="InputPassword"
+            name = "InputPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" /> <strong> Check me out</strong>
+          </label>
+        </div>
+        <div align="center">
+          <button type="submit" class="btn btn-default" style="width: 80px" >
+            登陆
+          </button>
+          <button type="submit" class="btn btn-default" style="width: 80px">
+            注册
+          </button>
+        </div>
+        <span style="color: red;">{{ error_msg }}</span>
+      </form>
+    </div>
+  </body>
+</html>

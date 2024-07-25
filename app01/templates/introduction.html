@@ -1,0 +1,203 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <style type="text/css">
+    body {
+      margin: 0;
+      background: url("{% static 'image/star.mp4' %}") no-repeat center;
+      background-size: cover;
+    }
+    #bgvid {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      background-size: cover;
+    }
+    .carousel-inner {
+      width: 960px;
+      height: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    .slide {
+      width: 960px;
+      height: 720px;
+      margin: auto;
+      text-align: center;
+    }
+    strong {
+      color: #fff;
+    }
+    .introduce {
+      width: 960px;
+      height: 720px;
+      margin: auto;
+      margin-top: 250px;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 25px;
+      color: #fff;
+    }
+
+    #music::-webkit-media-controls {
+      display: none !important;
+    }
+  </style>
+
+  <body>
+    <video id="bgvid" autoplay="autoplay" loop="loop" muted="muted">
+      <source src="{% static 'image/star.mp4' %}" type="video/mp4" />
+    </video>
+    <!--音乐播放-->
+    <i class="bi bi-music-note-beamed"></i>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="48"
+      height="48"
+      fill="currentColor"
+      class="bi bi-music-note-beamed"
+      viewBox="0 0 16 16"
+      style="cursor: pointer"
+      onclick="togglePlay()"
+    >
+      <path
+        d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2"
+      />
+      <path fill-rule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z" />
+      <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4z" />
+    </svg>
+    <!--设置音乐路径-->
+    <audio id="music" controls>
+      <source src="{% static 'music/bgm.mp3' %}" type="audio/mp3" />
+    </audio>
+    <script>
+      var music = document.getElementById("music");
+
+      function togglePlay() {
+        if (music.paused) {
+          music.play();
+        } else {
+          music.pause();
+        }
+      }
+    </script>
+
+    <div id="myCarousel" class="carousel slide">
+      <h1><strong>Wonderful photos</strong></h1>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <!-- 轮播（Carousel）指标 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <!-- 轮播（Carousel）项目 -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{% static 'image/zewg.jpg' %}" alt="First slide" />
+          <div class="carousel-caption"></div>
+        </div>
+        <div class="item">
+          <img src="{% static 'image/tubiao.jpg' %}" alt="Second slide" />
+          <div class="carousel-caption"></div>
+        </div>
+        <div class="item">
+          <img src="{% static 'image/beat3.jpg' %}" alt="Third slide" />
+          <div class="carousel-caption"></div>
+        </div>
+        <div class="item">
+          <img src="{% static 'image/aijiflower.png' %}" alt="Forth slide" />
+          <div class="carousel-caption"></div>
+        </div>
+      </div>
+      <!-- 轮播（Carousel）导航 -->
+
+      <a
+        class="left carousel-control"
+        href="#myCarousel"
+        role="button"
+        data-slide="prev"
+      >
+        <span
+          class="glyphicon glyphicon-chevron-left"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden"></span>
+      </a>
+      <a
+        class="right carousel-control"
+        href="#myCarousel"
+        role="button"
+        data-slide="next"
+      >
+        <span
+          class="glyphicon glyphicon-chevron-right"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden"></span>
+      </a>
+    </div>
+
+    <div class="introduce">
+      <h1><strong>Brief Introduction</strong></h1>
+      <p>
+        生命如同河流，时光匆匆流逝，<br />
+        愿你的心，如风中的帆，<br />
+        永远坚定，永不停息。<br />
+        哪怕在黑暗中，<br />
+        哪怕在孤独里，<br />
+        你的勇气，将照亮前行的路。<br />
+      </p>
+
+      <p>
+        Life is like a river, time flows swiftly,<br />
+        May your heart be like a sail in the wind,<br />
+        Firm forever, never ceasing.<br />
+        Even in darkness,<br />
+        Even in loneliness,<br />
+        Your courage will illuminate the path ahead.<br />
+      </p>
+    </div>
+  </body>
+</html>
